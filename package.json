@@ -53,7 +53,7 @@
                 "extensions": [
                     ".def"
                 ],
-                "configuration": "./definition-configuration.json"
+                "configuration": "./languages/definition-configuration.json"
             }
         ],
         "grammars": [
