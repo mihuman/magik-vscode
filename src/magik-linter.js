@@ -634,7 +634,7 @@ class MagikLinter {
           d = new vscode.Diagnostic(
             range,
             `"${varName}" is defined but never used.`,
-            vscode.DiagnosticSeverity.Error
+            vscode.DiagnosticSeverity.Warning
           );
         }
         diagnostics.push(d);
