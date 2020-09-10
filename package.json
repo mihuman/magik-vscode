@@ -412,6 +412,14 @@
                     "type": "string",
                     "default": "",
                     "description": "Home directory for gis aliases."
+                },
+                "magik-vscode.sessionList": {
+                    "type": "array",
+					"items": {
+						"type": "object"
+					},
+                    "default": [],
+                    "description": "Session list."
                 }
             }
         },

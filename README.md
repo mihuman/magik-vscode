@@ -156,6 +156,29 @@ I would recommend using these other extensions:
         2. Select a folder to search for runalias.exe
         3. Select an alias from the list to start
 
+    * Option 3:
+        Define a list of sessions in VS Code settings and use `Magik Start Session` (**F2 z**) or `Magik Start Debug Session` to select a session from a drop-down menu.
+        
+        e.g. (specifying the `envBatFile` value is optional)
+        ```
+        "magik-vscode.sessionList": [
+            {
+                "label": "cambridge_db_open",
+                "runAlias": "S:/SW522/2019-10-09/core/bin/x86/runalias.exe",
+                "fileName": "S:/SW522/2019-10-09/cambridge_db/config/gis_aliases",
+                "envBatFile": "S:/SW522/2019-10-09/cambridge_db/config/environment.bat",
+                "aliasName": "cambridge_db_open"
+            },
+            {
+                "label": "cambridge_db_open_no_auth",
+                "runAlias": "S:/SW522/2019-10-09/core/bin/x86/runalias.exe",
+                "fileName": "S:/SW522/2019-10-09/cambridge_db/config/gis_aliases",
+                "envBatFile": "S:/SW522/2019-10-09/cambridge_db/config/environment.bat",
+                "aliasName": "cambridge_db_open_no_auth"
+            }
+        ]
+        ```
+
 
     For a Smallworld 4.x development, set the property `magik-vscode.magikProcessName`. Use the process id if running more than one session.
 

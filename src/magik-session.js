@@ -20,6 +20,10 @@ const IGNORE_DIRS = [
 
 class MagikSession {
   constructor(context) {
+    this.sessionList = vscode.workspace.getConfiguration(
+      'magik-vscode'
+    ).sessionList;
+
     this.homeDir = vscode.workspace.getConfiguration(
       'magik-vscode'
     ).smallworldHome;
@@ -79,7 +83,11 @@ class MagikSession {
     const debugString = debug
       ? ` -j -agentpath:${path.dirname(this.runAlias)}/mda.dll`
       : '';
-    const command = `${this.runAlias}${debugString} -a ${target.fileName} ${
+    const envString = target.envBatFile
+      ? ` -e ${target.envBatFile}`
+      : '';
+    
+    const command = `${this.runAlias}${debugString} -a ${target.fileName}${envString} ${
       target.aliasName
     }\u000D`;
 
@@ -182,7 +190,19 @@ class MagikSession {
   }
 
   async _startSession(debug = false) {
-    vscode.commands.executeCommand('workbench.action.terminal.focus', {});
+    await vscode.commands.executeCommand('workbench.action.terminal.focus', {});
+
+    if (this.sessionList && this.sessionList.length > 0) {
+      const target = await vscode.window.showQuickPick(this.sessionList, {
+        placeHolder: 'Please select a session to open'
+      });
+      
+      if (target) {
+        this.runAlias = target.runAlias;
+        this._launchSession(target, debug);
+        return;
+      }
+    }
 
     this.allAliases = {};
     this.runAlias = undefined;
