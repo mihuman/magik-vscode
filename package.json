@@ -407,6 +407,11 @@
                     "type": "string",
                     "default": "",
                     "description": "Name or ID of the process running a Smallworld 4.x session e.g. 'sw_magik_win32.exe'. Leave empty for Smallworld 5."
+                },
+                "magik-vscode.smallworldHome": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Home directory for gis aliases."
                 }
             }
         },
